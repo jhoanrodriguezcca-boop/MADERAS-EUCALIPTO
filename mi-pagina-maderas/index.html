@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maderas Eucalipto SAS</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <img src="img/logo.png">
+  </div>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#productos">Productos</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#beneficios">Beneficios</a>
+    <a href="#galeria">Galería</a>
+    <a href="https://wa.me/573223014679" target="_blank" class="btn-nav">Cotizar</a>
+  </nav>
+</header>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/573223014679" target="_blank" class="wsp-float">
+  <img src="img/whatsapp.png">
+</a>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="overlay"></div>
+  <div class="contenido">
+    <span class="tagline">Calidad que perdura</span>
+    <h1>La fuerza de <br><span>la Madera Tratada</span></h1>
+    <p>Madera de alta resistencia para proyectos profesionales.</p>
+    <a href="#productos" class="btn-principal">Ver productos</a>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section class="productos" id="productos">
+  <div class="section-title">
+    <h2>Productos</h2>
+    <div class="underline"></div>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <a href="#p1" class="img-container"><img src="img/pro1.jpeg"></a>
+      <div class="card-info">
+        <h3>Tableros</h3>
+        <button onclick="wsp('Tableros')">Consultar</button>
+      </div>
+    </div>
+    <div id="p1" class="modal-css">
+      <a href="#productos" class="cerrar-fondo"></a>
+      <img src="img/pro1.jpeg">
+    </div>
+
+    <div class="card">
+      <a href="#p2" class="img-container"><img src="img/pro2.jpeg"></a>
+      <div class="card-info">
+        <h3>Estibas</h3>
+        <button onclick="wsp('Estibas')">Consultar</button>
+      </div>
+    </div>
+    <div id="p2" class="modal-css">
+      <a href="#productos" class="cerrar-fondo"></a>
+      <img src="img/pro2.jpeg">
+    </div>
+
+    <div class="card">
+      <a href="#p3" class="img-container"><img src="img/pro3.jpeg"></a>
+      <div class="card-info">
+        <h3>Listones</h3>
+        <button onclick="wsp('Listones')">Consultar</button>
+      </div>
+    </div>
+    <div id="p3" class="modal-css">
+      <a href="#productos" class="cerrar-fondo"></a>
+      <img src="img/pro3.jpeg">
+    </div>
+
+    <div class="card">
+      <a href="#p4" class="img-container"><img src="img/pro4.jpeg"></a>
+      <div class="card-info">
+        <h3>Postes</h3>
+        <button onclick="wsp('Postes')">Consultar</button>
+      </div>
+    </div>
+    <div id="p4" class="modal-css">
+      <a href="#productos" class="cerrar-fondo"></a>
+      <img src="img/pro4.jpeg">
+    </div>
+
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section class="nosotros" id="nosotros">
+  <div class="section-title">
+    <h2>Nuestro Equipo</h2>
+    <div class="underline"></div>
+  </div>
+
+  <div class="equipo-container">
+
+    <div class="perfil">
+      <div class="foto-marco">
+        <img src="img/perfil1.jpg">
+      </div>
+      <h3>NOMBRE</h3>
+      <p>Gerente General</p>
+    </div>
+
+    <div class="perfil">
+      <div class="foto-marco">
+        <img src="img/perfil2.jpg">
+      </div>
+      <h3>NOMBRE</h3>
+      <p>Jefe de Producción</p>
+    </div>
+
+    <div class="perfil">
+      <div class="foto-marco">
+        <img src="img/perfil3.jpg">
+      </div>
+      <h3>NOMBRE</h3>
+      <p>Asesora Comercial</p>
+    </div>
+
+    <div class="perfil">
+      <div class="foto-marco">
+        <img src="img/perfil4.jpg">
+      </div>
+      <h3>NOMBRE</h3>
+      <p>Logística</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="beneficios" id="beneficios">
+  <div class="section-title">
+    <h2>Beneficios</h2>
+    <div class="underline"></div>
+  </div>
+
+  <div class="beneficio-container">
+
+    <a href="#ben1"><img src="img/ben1.jpeg" class="thumb"></a>
+    <div id="ben1" class="modal-css"><a href="#beneficios" class="cerrar-fondo"></a><img src="img/ben1.jpeg"></div>
+
+    <a href="#ben2"><img src="img/ben2.jpeg" class="thumb"></a>
+    <div id="ben2" class="modal-css"><a href="#beneficios" class="cerrar-fondo"></a><img src="img/ben2.jpeg"></div>
+
+    <a href="#ben3"><img src="img/ben3.jpeg" class="thumb"></a>
+    <div id="ben3" class="modal-css"><a href="#beneficios" class="cerrar-fondo"></a><img src="img/ben3.jpeg"></div>
+
+    <a href="#ben4"><img src="img/ben4.jpeg" class="thumb"></a>
+    <div id="ben4" class="modal-css"><a href="#beneficios" class="cerrar-fondo"></a><img src="img/ben4.jpeg"></div>
+
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="galeria" id="galeria">
+  <div class="section-title">
+    <h2>Galería</h2>
+    <div class="underline"></div>
+  </div>
+
+<div class="imagenes">
+  <a href="#gal1"><img src="img/gal1.jpg"></a>
+  <a href="#gal2"><img src="img/gal2.jpeg"></a>
+  <a href="#gal3"><img src="img/gal3.jpg"></a>
+  <a href="#gal4"><img src="img/gal4.jpg"></a>
+  <a href="#gal5"><img src="img/gal5.jpeg"></a>
+  <a href="#gal6"><img src="img/gal6.jpeg"></a>
+  <a href="#gal7"><img src="img/gal7.jpeg"></a>
+  <a href="#gal8"><img src="img/gal8.jpeg"></a>
+</div>
+</section>
+
+<!-- LIGHTBOX GALERIA -->
+<div id="gal1" class="lightbox"><a href="#"><img src="img/gal1.jpg"></a></div>
+<div id="gal2" class="lightbox"><a href="#"><img src="img/gal2.jpeg"></a></div>
+<div id="gal3" class="lightbox"><a href="#"><img src="img/gal3.jpg"></a></div>
+<div id="gal4" class="lightbox"><a href="#"><img src="img/gal4.jpg"></a></div>
+<div id="gal5" class="lightbox"><a href="#"><img src="img/gal5.jpeg"></a></div>
+<div id="gal6" class="lightbox"><a href="#"><img src="img/gal6.jpeg"></a></div>
+<div id="gal7" class="lightbox"><a href="#"><img src="img/gal7.jpeg"></a></div>
+<div id="gal8" class="lightbox"><a href="#"><img src="img/gal8.jpeg"></a></div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+    <div>
+      <h3>Contacto</h3>
+      <p>Email:Maderaseucaliptosas@gmail.com</p>
+    </div>
+
+    <div>
+      <h3>Redes</h3>
+    <a href="https://www.facebook.com/profile.php?id=61552076991430" target="_blank" rel="noopener noreferrer">
+  Facebook
+</a>
+    </div>
+  </div>
+
+  <p>© 2026 Maderas Eucalipto</p>
+</footer>
+<script>
+const imagenes = [
+  "img/gal1.jpeg",
+  "img/gal2.jpeg",
+  "img/gal3.jpeg",
+  "img/gal4.jpeg",
+  "img/gal5.jpeg",
+  "img/gal6.jpeg",
+  "img/gal7.jpeg",
+  "img/gal8.jpeg"
+];
+
+let index = 0;
+
+function getIndex() {
+  const hash = window.location.hash;
+  const num = hash.replace("#gal", "");
+  index = parseInt(num) - 1;
+}
+
+document.addEventListener("keydown", (e) => {
+  if (!window.location.hash.includes("gal")) return;
+
+  getIndex();
+
+  if (e.key === "ArrowRight") {
+    index = (index + 1) % imagenes.length;
+    window.location.hash = "gal" + (index + 1);
+  }
+
+  if (e.key === "ArrowLeft") {
+    index = (index - 1 + imagenes.length) % imagenes.length;
+    window.location.hash = "gal" + (index + 1);
+  }
+
+  if (e.key === "Escape") {
+    window.location.hash = "";
+  }
+});
+
+
+function wsp(producto){
+  const numero = "573223014679";
+  const mensaje = "Hola, quiero cotizar " + producto;
+  const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
+  
+  window.open(url, "_blank");
+}
+
+</script>
+
+</body>
+</html>
