@@ -191,14 +191,14 @@
 </section>
 
 <!-- LIGHTBOX GALERIA -->
-<div id="gal1" class="lightbox"><a href="#"><img src="img/gal1.jpg"></a></div>
-<div id="gal2" class="lightbox"><a href="#"><img src="img/gal2.jpeg"></a></div>
-<div id="gal3" class="lightbox"><a href="#"><img src="img/gal3.jpg"></a></div>
-<div id="gal4" class="lightbox"><a href="#"><img src="img/gal4.jpg"></a></div>
-<div id="gal5" class="lightbox"><a href="#"><img src="img/gal5.jpeg"></a></div>
-<div id="gal6" class="lightbox"><a href="#"><img src="img/gal6.jpeg"></a></div>
-<div id="gal7" class="lightbox"><a href="#"><img src="img/gal7.jpeg"></a></div>
-<div id="gal8" class="lightbox"><a href="#"><img src="img/gal8.jpeg"></a></div>
+<div id="gal1" class="lightbox"><a href="javascript:void(0)" onclick="cerrarGaleria(event)"><img src="img/gal1.jpg"></a><div class="nav-controls"><span class="prev" onclick="cambiarImagen(-1, event)">❮</span><span class="next" onclick="cambiarImagen(1, event)">❯</span></div></div>
+<div id="gal2" class="lightbox"><a href="javascript:void(0)" onclick="cerrarGaleria(event)"><img src="img/gal2.jpeg"></a><div class="nav-controls"><span class="prev" onclick="cambiarImagen(-1, event)">❮</span><span class="next" onclick="cambiarImagen(1, event)">❯</span></div></div>
+<div id="gal3" class="lightbox"><a href="javascript:void(0)" onclick="cerrarGaleria(event)"><img src="img/gal3.jpg"></a><div class="nav-controls"><span class="prev" onclick="cambiarImagen(-1, event)">❮</span><span class="next" onclick="cambiarImagen(1, event)">❯</span></div></div>
+<div id="gal4" class="lightbox"><a href="javascript:void(0)" onclick="cerrarGaleria(event)"><img src="img/gal4.jpg"></a><div class="nav-controls"><span class="prev" onclick="cambiarImagen(-1, event)">❮</span><span class="next" onclick="cambiarImagen(1, event)">❯</span></div></div>
+<div id="gal5" class="lightbox"><a href="javascript:void(0)" onclick="cerrarGaleria(event)"><img src="img/gal5.jpeg"></a><div class="nav-controls"><span class="prev" onclick="cambiarImagen(-1, event)">❮</span><span class="next" onclick="cambiarImagen(1, event)">❯</span></div></div>
+<div id="gal6" class="lightbox"><a href="javascript:void(0)" onclick="cerrarGaleria(event)"><img src="img/gal6.jpeg"></a><div class="nav-controls"><span class="prev" onclick="cambiarImagen(-1, event)">❮</span><span class="next" onclick="cambiarImagen(1, event)">❯</span></div></div>
+<div id="gal7" class="lightbox"><a href="javascript:void(0)" onclick="cerrarGaleria(event)"><img src="img/gal7.jpeg"></a><div class="nav-controls"><span class="prev" onclick="cambiarImagen(-1, event)">❮</span><span class="next" onclick="cambiarImagen(1, event)">❯</span></div></div>
+<div id="gal8" class="lightbox"><a href="javascript:void(0)" onclick="cerrarGaleria(event)"><img src="img/gal8.jpeg"></a><div class="nav-controls"><span class="prev" onclick="cambiarImagen(-1, event)">❮</span><span class="next" onclick="cambiarImagen(1, event)">❯</span></div></div>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -220,10 +220,10 @@
 </footer>
 <script>
 const imagenes = [
-  "img/gal1.jpeg",
+  "img/gal1.jpg",
   "img/gal2.jpeg",
-  "img/gal3.jpeg",
-  "img/gal4.jpeg",
+  "img/gal3.jpg",
+  "img/gal4.jpg",
   "img/gal5.jpeg",
   "img/gal6.jpeg",
   "img/gal7.jpeg",
@@ -231,26 +231,46 @@ const imagenes = [
 ];
 
 let index = 0;
+let touchStartX = 0;
+let touchEndX = 0;
 
 function getIndex() {
   const hash = window.location.hash;
   const num = hash.replace("#gal", "");
   index = parseInt(num) - 1;
+  if (isNaN(index)) index = 0;
 }
 
+function cambiarImagen(direccion, event) {
+  if (event) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+  
+  getIndex();
+  index = (index + direccion + imagenes.length) % imagenes.length;
+  window.location.hash = "gal" + (index + 1);
+}
+
+function cerrarGaleria(event) {
+  if (event && event.target.tagName === "IMG") {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+}
+
+// Navegación con teclado
 document.addEventListener("keydown", (e) => {
   if (!window.location.hash.includes("gal")) return;
 
-  getIndex();
-
   if (e.key === "ArrowRight") {
-    index = (index + 1) % imagenes.length;
-    window.location.hash = "gal" + (index + 1);
+    e.preventDefault();
+    cambiarImagen(1);
   }
 
   if (e.key === "ArrowLeft") {
-    index = (index - 1 + imagenes.length) % imagenes.length;
-    window.location.hash = "gal" + (index + 1);
+    e.preventDefault();
+    cambiarImagen(-1);
   }
 
   if (e.key === "Escape") {
@@ -258,6 +278,32 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+// Navegación por swipe (táctil)
+document.addEventListener("touchstart", (e) => {
+  if (!window.location.hash.includes("gal")) return;
+  touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+document.addEventListener("touchend", (e) => {
+  if (!window.location.hash.includes("gal")) return;
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+}, false);
+
+function handleSwipe() {
+  const diferencia = touchStartX - touchEndX;
+  const minSwipe = 50; // Mínimo de píxeles para detectar swipe
+
+  if (Math.abs(diferencia) > minSwipe) {
+    if (diferencia > 0) {
+      // Swipe izquierda = siguiente imagen
+      cambiarImagen(1);
+    } else {
+      // Swipe derecha = imagen anterior
+      cambiarImagen(-1);
+    }
+  }
+}
 
 function wsp(producto){
   const numero = "573223014679";

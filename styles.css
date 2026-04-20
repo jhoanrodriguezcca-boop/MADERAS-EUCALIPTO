@@ -330,55 +330,107 @@ nav a:hover {
   text-align: center;
 }
 
-.lightbox img {
-  max-width: 70vw;
-  max-height: 80vh;
-  object-fit: contain;
-  border-radius: 15px;
-}
-
 .lightbox a {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
+  text-decoration: none;
+}
+
+.lightbox img {
+  max-width: 70vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 15px;
+  user-select: none;
+  pointer-events: none;
 }
 
 .lightbox:target {
   display: flex;
 }
 
-.lightbox img {
-  max-width: 70%;
-  max-height: 70%;
-  border-radius: 15px;
-  transition: 0.3s;
+/* CONTROLES DE NAVEGACIÓN */
+.nav-controls {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
 }
 
-/* BOTONES */
-.lightbox::before,
-.lightbox::after {
+.nav-controls span {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   font-size: 50px;
   color: white;
-  padding: 10px;
+  padding: 20px;
   cursor: pointer;
   user-select: none;
+  transition: all 0.3s ease;
+  pointer-events: all;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
-/* IZQUIERDA */
-.lightbox::before {
-  content: "❮";
+.nav-controls .prev {
   left: 30px;
 }
 
-/* DERECHA */
-.lightbox::after {
-  content: "❯";
+.nav-controls .next {
   right: 30px;
+}
+
+.nav-controls span:hover {
+  font-size: 55px;
+  color: var(--dorado);
+  text-shadow: 0 2px 15px rgba(196, 139, 50, 0.8);
+}
+
+/* RESPONSIVE LIGHTBOX */
+@media (max-width: 768px) {
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 70vh;
+  }
+  
+  .nav-controls span {
+    font-size: 40px;
+    padding: 15px;
+  }
+  
+  .nav-controls .prev {
+    left: 15px;
+  }
+  
+  .nav-controls .next {
+    right: 15px;
+  }
+}
+
+/* RESPONSIVO MÓVIL PEQUEÑO */
+@media (max-width: 480px) {
+  .lightbox img {
+    max-width: 95vw;
+    max-height: 60vh;
+  }
+  
+  .nav-controls span {
+    font-size: 32px;
+    padding: 10px;
+  }
+  
+  .nav-controls .prev {
+    left: 10px;
+  }
+  
+  .nav-controls .next {
+    right: 10px;
+  }
 }
 
 
